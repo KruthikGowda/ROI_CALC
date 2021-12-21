@@ -1,45 +1,64 @@
+"use strict";
+
+function initDOMInput() {
+  window.noOfSkus = document.getElementById("Number_of_SKUs").value;
+  window.noOfWarehouses = document.getElementById("Number_of_Warehouses_+_Cs_+_Stores").value;
+  window.annualRevenue = document.getElementById("Annual_Revenue_(In USD millions)").value;
+  window.marginPercentage = document.getElementById("Margin_%").value;
+  window.avgDaysOnHand = document.getElementById("Average_days_on_hand").value;
+}
+
 // ! FORM VALIDATION
 // ! GETTING VALID INPUTS FROM PAGE
-document.getElementById("Number_of_SKUs").addEventListener("change", (e) => {
-  if (e.target.value === "" || e.target.value < 0) {
-    alert("Please enter a valid number");
-  } else {
-    window.noOfSkus = e.target.value;
-  }
-});
+// document.getElementById("Number_of_SKUs").addEventListener("change", (e) => {
+//   if (e.target.value === "" || e.target.value < 0) {
+//     alert("Please enter a valid number");
+//     return;
+//   } else {
+//     window.noOfSkus = e.target.value;
+//     calculate_roi();
+//   }
+// });
 
-document.getElementById("Number_of_Warehouses_+_Cs_+_Stores").addEventListener("change", (e) => {
-  if (e.target.value === "" || e.target.value < 0) {
-    alert("Please enter a valid number");
-  } else {
-    window.noOfWarehouses = e.target.value;
-  }
-});
+// document.getElementById("Number_of_Warehouses_+_Cs_+_Stores").addEventListener("change", (e) => {
+//   if (e.target.value === "" || e.target.value < 0) {
+//     alert("Please enter a valid number");
+//     return;
+//   } else {
+//     window.noOfWarehouses = e.target.value;
+//     calculate_roi();
+//   }
+// });
 
-document.getElementById("Annual_Revenue_(In USD millions)").addEventListener("change", (e) => {
-  if (e.target.value === "" || e.target.value < 0) {
-    alert("Please enter a valid number");
-  } else {
-    window.annualRevenue = e.target.value;
-  }
-});
+// document.getElementById("Annual_Revenue_(In USD millions)").addEventListener("change", (e) => {
+//   if (e.target.value === "" || e.target.value < 0) {
+//     alert("Please enter a valid number");
+//     return;
+//   } else {
+//     window.annualRevenue = e.target.value;
+//     calculate_roi();
+//   }
+// });
 
-document.getElementById("Margin_%").addEventListener("change", (e) => {
-  if (e.target.value === "" || e.target.value < 0) {
-    alert("Please enter a valid number");
-  } else {
-    window.marginPercentage = e.target.value;
-  }
-});
+// document.getElementById("Margin_%").addEventListener("change", (e) => {
+//   if (e.target.value === "" || e.target.value < 0) {
+//     alert("Please enter a valid number");
+//     return;
+//   } else {
+//     window.marginPercentage = e.target.value;
+//     calculate_roi();
+//   }
+// });
 
-document.getElementById("Average_days_on_hand").addEventListener("change", (e) => {
-  if (e.target.value === "" || e.target.value < 0) {
-    alert("Please enter a valid number");
-  } else {
-    window.avgDaysOnHand = e.target.value;
-    calculate_roi();
-  }
-});
+// document.getElementById("Average_days_on_hand").addEventListener("change", (e) => {
+//   if (e.target.value === "" || e.target.value < 0) {
+//     alert("Please enter a valid number");
+//     return;
+//   } else {
+//     window.avgDaysOnHand = e.target.value;
+//     calculate_roi();
+//   }
+// });
 // ! ************ END OF FORM VALIDATION ************
 
 //ACTION: Caluating ROI outputs
@@ -51,8 +70,11 @@ function wrapper(event) {
   calculate_roi();
 }
 
+// console.log(wrapper());
+
 function calculate_roi() {
   console.time("Execution Time");
+  initDOMInput();
 
   // ! Calculations of value passed into funtions parameters
 
@@ -135,10 +157,11 @@ function Potential_out_of_stock_losses_handler(
  * @param  {} impact_percentage
  */
 function Scope_of_revenue_increase_handler(Potential_out_of_stock_losses, impact_percentage) {
-  console.log(Potential_out_of_stock_losses, impact_percentage);
-  return (Scope_of_revenue_increase = Math.round(
+  let Scope_of_revenue_increase = Math.round(
     Potential_out_of_stock_losses * (impact_percentage * 0.01)
-  ));
+  );
+
+  return Scope_of_revenue_increase;
 }
 
 /**
@@ -146,9 +169,11 @@ function Scope_of_revenue_increase_handler(Potential_out_of_stock_losses, impact
  * @param  {} Inventory_turns
  */
 function Inventory_cost_can_be_saved_handler(Inventory_cost_saved_per_turn, Inventory_turns) {
-  return (Inventory_cost_can_be_saved = Math.round(
+  let Inventory_cost_can_be_saved = Math.round(
     Inventory_cost_saved_per_turn.toFixed(2) * Inventory_turns
-  ));
+  );
+
+  return Inventory_cost_can_be_saved;
 }
 
 /**
@@ -168,7 +193,7 @@ function Final_Inventory_cost_handler(No_of_SKU_combs, Inventory_cost_per_turn) 
  */
 
 function annualRev(annualRevenue) {
-  return (anlRev =
+  let anlRev =
     annualRevenue <= 15000000
       ? "<15M"
       : annualRevenue <= 50000000
@@ -181,7 +206,9 @@ function annualRev(annualRevenue) {
       ? "1B-5B"
       : annualRevenue <= 10000000000
       ? "5B-10B"
-      : "10B+");
+      : "10B+";
+
+  return anlRev;
 }
 
 /**
