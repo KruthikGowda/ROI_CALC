@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- Form for taking inputs -->
+    <form>
+      <label for="Number_of_SKUs">Number of SKUs:</label><br />
+      <input type="text" placeholder="Enter SKUs" name="Number_of_SKUs" id="Number_of_SKUs" /><br />
+      <label for="Number_of_Warehouses_+_Cs_+_Stores">Number of Warehouses + DCs + Stores:</label
+      ><br />
+      <input
+        type="text"
+        placeholder="Number of Warehouses + DCs + Stores"
+        name="Number_of_Warehouses_+_Cs_+_Stores"
+        id="Number_of_Warehouses_+_Cs_+_Stores"
+      /><br />
+      <label for="Annual_Revenue_(In USD millions)">Annual Revenue (In USD millions):</label><br />
+      <input
+        type="text"
+        placeholder="Annual Revenue (In USD millions)"
+        name="Annual_Revenue_(In USD millions)"
+        id="Annual_Revenue_(In USD millions)"
+      /><br />
+      <label for="Margin_%">Margin %</label><br />
+      <input type="text" placeholder="Enter margin %" name="Margin_%" id="Margin_%" /><br />
+      <label for="Average_days_on_hand">Average days on hand:</label><br />
+      <input
+        type="text"
+        placeholder="Enter average days on hand"
+        name="Average_days_on_hand"
+        id="Average_days_on_hand"
+      /><br />
+      <br />
+      <input type="submit" value="Submit" onclick="{wrapper(event)}" id="sumbit" />
+    </form>
+    <!-- Form End -->
+
+    <!-- Displaying Results -->
+    <div>
+      <p id="ptag_1"></p>
+      <p id="ptag_2"></p>
+    </div>
+    <div>
+      <p id="ptag_3"></p>
+      <p id="ptag_4"></p>
+    </div>
+
+    <!-- Running Script -->
+    <script src="./app2.js"></script>
+  </body>
+</html>
